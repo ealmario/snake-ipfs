@@ -1,0 +1,370 @@
+// Variables
+$body-color: #9dbef5;
+$blacks: #1f1f1f;
+$overlay-bg: rgba(31,31,31, 0.4);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
+}
+
+body {
+  background:$body-color;
+  color: $blacks;
+  font-family: 'Press Start 2p', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.footer {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  margin: 1rem auto;
+  text-align: center;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.overlay {
+  background: $overlay-bg;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+
+  h1, h2 {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .play {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.button {
+  background: $blacks;
+  border-radius: 4px;
+  color: $body-color;
+  border: none;
+  cursor: pointer;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 0.825rem;
+  padding: 1rem 1.25rem;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.outline {
+  background: $body-color;
+  border: 3px solid $blacks;
+  color: $blacks;
+}
+
+.switch {
+  width: 40%;
+  line-height: 1.5rem;
+  padding: 0.5rem;
+}
+
+.overlay-modal,
+.inst-modal,
+.game-over-modal {
+  background: $body-color;
+  border: 5px solid $blacks;
+  box-shadow: 0 4px 8px $overlay-bg;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  width: 95%;
+}
+
+.overlay-modal .reminder {
+  font-size: 0.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1rem;
+}
+
+.inst-modal {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  h2 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .controls {
+    font-size: 0.8125rem;
+    margin-bottom: 1rem;
+  }
+
+  .reminder.info {
+    margin-top: 0;
+  }
+
+  .reminder {
+    font-size: 0.5rem;
+    line-height: 1rem;
+    letter-spacing: 0.4px;
+    margin: 1.25rem auto;
+    text-align: center;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 90%;
+  }
+}
+
+.game-over-modal {
+  .button {
+    width: 60%;
+  }
+
+  .reminder {
+    font-size: 0.75rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .yes {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.display-none {
+  display: none;
+}
+
+.game-board {
+  border: 5px solid $blacks;
+  width: 90vmin;
+  height: 90vmin;
+  display: grid;
+  grid-template-rows: repeat(21, 1fr);
+  grid-template-columns: repeat(21, 1fr);
+}
+
+.scores-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  padding: 2rem 0;
+  width: 90vmin;
+
+  .score-container {
+    margin-bottom: 1rem;
+  }
+}
+
+.mobile-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 90vmin;
+  margin: 0 auto;
+}
+
+.mobile-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 1rem;
+  width: 50%;
+  height: auto;
+
+  .row {
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    width: 100%;
+    
+    &:first-child,
+    &:last-child {
+      justify-content: center;
+    }
+
+    &:nth-child(2) {
+      justify-content: space-around;
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+.arrow-left,
+.arrow-right,
+.arrow-up,
+.arrow-down {
+  background: none;
+  border: none;
+  color: $blacks;
+  cursor: pointer;
+  width: 2.75rem;
+  height: 2.75rem;
+
+  i {
+    font-size: 2.75rem;
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.snake {
+  background: $blacks;
+  border: .25vmin solid $body-color;
+}
+
+.food {
+  background: $body-color;
+  border: 2px solid $blacks;
+  margin: .25vmin;
+  transform: rotate(45deg) scale(0.7);
+}
+
+.modal.fixed {
+  font-family: 'Montserrat', sans-serif;
+}
+
+@media screen and (min-width: 375px) {
+  .container {
+    justify-content: flex-start;
+  }
+
+  .arrow-left,
+  .arrow-right,
+  .arrow-up,
+  .arrow-down {
+    width: 3rem;
+    height: 3rem;
+
+    i {
+      font-size: 3rem;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-top: 1rem;
+  }
+  
+  .scores-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 0.5rem;
+
+    .score-container {
+      margin-bottom: 0;
+    }
+  }
+
+  .overlay-modal,
+  .game-over-modal,
+  .inst-modal {
+    width: 50%;
+
+    button {
+      padding: 0.75rem 1rem;
+      width: 60%;
+    }
+  }
+
+  .inst-modal {
+    li {
+      font-size: 0.8125rem;
+    }
+
+    .controls {
+      font-size: 1rem;
+    }
+
+    .reminder {
+      font-size: 0.6875rem;
+      line-height: 1.25rem;
+    }
+  }
+
+  .mobile-controls {
+    width: 30%;
+  }
+
+  .arrow-left,
+  .arrow-right,
+  .arrow-up,
+  .arrow-down {
+    width: 3.25rem;
+    height: 3.25rem;
+
+    i {
+      font-size: 3.25rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .overlay-modal,
+  .game-over-modal,
+  .inst-modal {
+    width: 32rem;
+  }
+
+  .mobile-container {
+    display: none;
+  }
+}
