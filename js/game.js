@@ -106,8 +106,8 @@ function retrieveScore() {
 function restartGame() {
   score = 0;
   highScore = 0;
-  window.location = "/snake-game/";
-  // window.location = "/";
+  // window.location = "/snake-game/";
+  window.location = "/";
 }
 
 function toggleSwitch() {
